@@ -26,6 +26,7 @@ public record DetailStoreResponse(
 
     @Builder
     public record Menu(
+            Long menu_id,
             String name,
             Integer price,
             String introduction

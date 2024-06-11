@@ -15,7 +15,6 @@ import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
@@ -185,6 +184,7 @@ public class StoreService {
                         .name(menu.getName())
                         .price(menu.getPrice())
                         .introduction(menu.getIntroduction())
+                        .menu_id(menu.getId())
                         .build())
                 .toList();
 
