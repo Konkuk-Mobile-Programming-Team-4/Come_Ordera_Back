@@ -81,6 +81,7 @@ public class UserService {
                     .code(502)
                     .message("사장님 환영합니다.")
                     .store_id((storeJpaEntity == null) ? 0 : storeJpaEntity.getId())
+                    .user_id(user.getId())
                     .build();
         }
 
