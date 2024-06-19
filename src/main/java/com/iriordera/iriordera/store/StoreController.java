@@ -78,4 +78,11 @@ public class StoreController {
 
         return storeService.getUserOrder(orderId, userId);
     }
+
+    @GetMapping("order/delete")
+    public void deleteOrder(@RequestParam Long orderId){
+        log.info("deleteOrder Controller");
+
+        storeService.deleteOrder(orderId);
+    }
 }

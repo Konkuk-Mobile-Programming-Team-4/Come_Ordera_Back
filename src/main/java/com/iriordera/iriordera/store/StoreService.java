@@ -240,4 +240,12 @@ public class StoreService {
                         .build())
                 .build();
     }
+
+    public void deleteOrder(Long orderId) {
+        log.info("deleteOrder Service");
+
+        OrderJpaEntity orderJpaEntity = orderRepository.findById(orderId).get();
+
+        orderRepository.delete(orderJpaEntity);
+    }
 }
