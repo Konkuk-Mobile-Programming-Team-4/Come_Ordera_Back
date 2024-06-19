@@ -3,10 +3,7 @@ package com.iriordera.iriordera.user;
 import com.iriordera.iriordera.user.dto.request.CreateReviewRequest;
 import com.iriordera.iriordera.user.dto.request.SignInRequest;
 import com.iriordera.iriordera.user.dto.request.SignUpRequest;
-import com.iriordera.iriordera.user.dto.response.CreateReviewResponse;
-import com.iriordera.iriordera.user.dto.response.GetPointResponse;
-import com.iriordera.iriordera.user.dto.response.SignInResponse;
-import com.iriordera.iriordera.user.dto.response.SignUpResponse;
+import com.iriordera.iriordera.user.dto.response.*;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.web.bind.annotation.*;
@@ -45,5 +42,12 @@ public class UserController {
         log.info("createReview Controller");
 
         return userService.createReview(createReviewRequest);
+    }
+
+    @GetMapping("/point")
+    public SetPointResponse setPoint(@RequestParam Long userId, @RequestParam Integer point){
+        log.info("setPoint Controller");
+
+        return userService.setPoint(userId, point);
     }
 }

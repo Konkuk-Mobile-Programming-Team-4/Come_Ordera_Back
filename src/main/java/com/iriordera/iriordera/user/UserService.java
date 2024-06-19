@@ -4,6 +4,7 @@ import com.iriordera.iriordera.review.ReviewJpaEntity;
 import com.iriordera.iriordera.review.ReviewRepository;
 import com.iriordera.iriordera.store.StoreJpaEntity;
 import com.iriordera.iriordera.store.StoreRepository;
+import com.iriordera.iriordera.user.dto.response.SetPointResponse;
 import com.iriordera.iriordera.user.dto.request.CreateReviewRequest;
 import com.iriordera.iriordera.user.dto.request.SignInRequest;
 import com.iriordera.iriordera.user.dto.request.SignUpRequest;
@@ -16,6 +17,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 
 import java.util.Objects;
+import java.util.Optional;
 
 @Slf4j
 @Service
@@ -113,6 +115,21 @@ public class UserService {
                 .code(611)
                 .message("리뷰가 성공적으로 등록 되었습니다.")
                 .review_id(reviewId)
+                .build();
+    }
+
+    public SetPointResponse setPoint(Long userId, Integer point) {
+        log.info("setPoint Service");
+
+        Optional<UserJpaEntity> userJpaEntity = userRepository.findById(userId);
+
+        userJpaEntity.get().setPoint(userJpaEntity.get().getPoint() + point);
+
+        userRepository.save(userJpaEntity.get());
+
+        return SetPointResponse.builder()
+                .code(200)
+                .message("포인트가 정상적으로 반영되었습니다.")
                 .build();
     }
 }
